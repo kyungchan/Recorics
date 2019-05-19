@@ -7,13 +7,13 @@
         <v-toolbar-title to="/" :style="'margin: 30px;'" class="white--text hidden-sm-and-down">Recorics</v-toolbar-title>
       </router-link>
       <v-toolbar-items class="hidden-sm-and-down headline">
-        <v-btn flat to="" class="subheading white--text">차트</v-btn>
+        <v-btn flat to="/chart" class="subheading white--text">차트</v-btn>
       </v-toolbar-items>
       <v-toolbar-items class="hidden-sm-and-down headline">
-        <v-btn flat class="subheading white--text">노래추천</v-btn>
+        <v-btn flat to="/explore" class="subheading white--text">음원검색</v-btn>
       </v-toolbar-items>
       <v-toolbar-items class="hidden-sm-and-down headline">
-        <v-btn flat class="subheading white--text">가사생성</v-btn>
+        <v-btn flat to="/lyrics" class="subheading white--text">가사생성</v-btn>
       </v-toolbar-items>
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-sm-and-down headline">
@@ -92,6 +92,7 @@
 .fade-leave-to {
   opacity: 0;
 }
+
 </style>
 
 
@@ -104,7 +105,7 @@ export default {
       drawerItems: [
         { title: "홈", url: "/" },
         { title: "차트", url: "" },
-        { title: "노래추천", url: "" },
+        { title: "음원검색", url: "" },
         { title: "가사생성", url: "" },
         { title: "도움말", url: "" },
       ],
