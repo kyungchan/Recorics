@@ -1,5 +1,5 @@
 <template>
-  <v-container class="my-5" style="maxWidth: 1260px;">
+  <v-container style="maxWidth: 1260px;">
     <v-layout row wrap>
       <v-flex xs12 class="text-xs-center" pa-4>
         <h1>제목1</h1>

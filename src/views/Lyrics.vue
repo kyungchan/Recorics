@@ -1,14 +1,17 @@
 <template>
-<div>
-    <h1>가사생성</h1>
-    <h1>{{artist}}</h1>   
-</div>   
+  <Artists />
 </template>
 
 <script>
-export default {
-  props: ["artist"]
-}
+  import Artists from '../components/Artists'
+
+  export default {
+    
+  props: ["artist"],
+    components: {
+      Artists
+    }
+  }
 </script>
 
 <style>

@@ -4,7 +4,11 @@
     <v-toolbar app color="primary" class="hidden-sm-and-down">
       <v-toolbar-side-icon @click.stop="drawer = !drawer" class="hidden-md-and-up white--text"></v-toolbar-side-icon>
       <router-link to="/">
-        <v-toolbar-title to="/" :style="'margin: 30px;'" class="white--text hidden-sm-and-down">Recorics</v-toolbar-title>
+        <v-toolbar-title
+          to="/"
+          :style="'margin: 30px;'"
+          class="white--text hidden-sm-and-down"
+        >Recorics</v-toolbar-title>
       </router-link>
       <v-toolbar-items class="hidden-sm-and-down headline">
         <v-btn flat to="/chart" class="subheading white--text">차트</v-btn>
@@ -17,7 +21,7 @@
       </v-toolbar-items>
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-sm-and-down headline">
-        <v-btn flat to="" class="subheading white--text">도움말</v-btn>
+        <v-btn flat to class="subheading white--text">도움말</v-btn>
       </v-toolbar-items>
     </v-toolbar>
 
@@ -64,7 +68,8 @@
           <v-card-text class="white--text"></v-card-text>
           <span class="subheading">Recorics</span>
           <br>
-          <span class="grey--text">캡스톤 프로젝트
+          <span class="grey--text">
+            캡스톤 프로젝트
             <br>팀장: 박신우
             <br>팀원: 김경찬, 김한빈, 임상윤
             <br>
@@ -92,7 +97,6 @@
 .fade-leave-to {
   opacity: 0;
 }
-
 </style>
 
 
@@ -104,10 +108,10 @@ export default {
     return {
       drawerItems: [
         { title: "홈", url: "/" },
-        { title: "차트", url: "" },
-        { title: "음원검색", url: "" },
-        { title: "가사생성", url: "" },
-        { title: "도움말", url: "" },
+        { title: "차트", url: "/chart" },
+        { title: "음원검색", url: "/explore" },
+        { title: "가사생성", url: "/lyrics" },
+        { title: "도움말", url: "" }
       ],
       drawer: false
     };
