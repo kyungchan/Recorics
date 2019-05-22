@@ -1,27 +1,40 @@
 <template>
-  <v-container class="artist-list">
-    <v-layout row wrap justify-center text-xs-center>
-      <v-flex
-        xs6
-        sm6
-        md4
-        lg4
-        xl4
-        pa-3
-        v-for="(artist, index) in artists"
-        :key="index"
-        @mouseover="hoverImg(index)"
-        @mousedown="selectImg(index)"
-        @mouseout="hoverImg(-1)"
-      >
-        <div style="position: relative;">
-          <div :class="{'name-hover': isHovered(index)}" class="artist-name">{{artist.name}}</div>
-          <img :class="{'img-hover': isHovered(index)}" class="artist-img" :src="artist.image">
-        </div>
-      </v-flex>
-    </v-layout>
-    <h1 v-if="seletedArtist != -1">{{artists[seletedArtist].name}}</h1>
-  </v-container>
+  <div>
+    <div style="background: linear-gradient(#9C27B0, #D81B60)">
+      <v-container class="artist-list">
+        <div class="lyrics-title">가수를 선택해보세요.</div>
+        <v-layout row wrap justify-center text-xs-center>
+          <v-flex
+            xs6
+            sm6
+            md4
+            lg4
+            xl4
+            pa-3
+            v-for="(artist, index) in artists"
+            :key="index"
+            @mouseover="hoverImg(index)"
+            @mousedown="selectImg(index)"
+            @mouseout="hoverImg(-1)"
+          >
+            <div
+              style="position: relative;"
+              v-scroll-to="{ 
+                          el: '#showLyrics',
+                          easing: [0.77, 0, 0.175, 1],
+                          duration: 1500 
+                      }"
+            >
+              <div :class="{'name-hover': isHovered(index)}" class="artist-name">{{artist.name}}</div>
+              <img :class="{'img-hover': isHovered(index)}" class="artist-img" :src="artist.image">
+            </div>
+          </v-flex>
+        </v-layout>
+        <h1 v-if="seletedArtist != -1">{{artists[seletedArtist].name}}</h1>
+      </v-container>
+    </div>
+    <div style="height: 1000px; padding-top: 60px" id="showLyrics">dddd</div>
+  </div>
 </template>
 
 <script>
@@ -60,6 +73,9 @@ export default {
       ]
     };
   },
+  watch: {
+    $route: "fetchData"
+  },
   methods: {
     selectImg(seletedArtist) {
       this.seletedArtist = seletedArtist;
@@ -78,6 +94,13 @@ export default {
 </script>
 
 <style>
+.lyrics-title {
+  font-size: 40px;
+  color: white;
+  text-align: center;
+  margin: 10px;
+}
+
 .artist-list {
   max-width: 1200px;
 }
