@@ -30,10 +30,9 @@
             </div>
           </v-flex>
         </v-layout>
-        <h1 v-if="seletedArtist != -1">{{artists[seletedArtist].name}}</h1>
       </v-container>
     </div>
-    <div style="height: 1000px; padding-top: 60px" id="showLyrics">dddd</div>
+    <div style id="showLyrics">{{lyrics}}</div>
   </div>
 </template>
 
@@ -42,6 +41,7 @@ export default {
   name: "app",
   data() {
     return {
+      lyrics: "ddd",
       hoverArtist: -1,
       seletedArtist: -1,
       artists: [
@@ -63,7 +63,7 @@ export default {
         {
           name: "dok2",
           image: require("../../public/img/artist/dok2.jpg"),
-          script: "dock2"
+          script: "dok2"
         },
         {
           name: "볼빨간사춘기",
@@ -73,12 +73,16 @@ export default {
       ]
     };
   },
-  watch: {
-    $route: "fetchData"
-  },
+  watch: {},
   methods: {
     selectImg(seletedArtist) {
+      this.lyrics = "";
       this.seletedArtist = seletedArtist;
+      this.$http
+        .get("/api/lyrics/" + this.artists[seletedArtist].script)
+        .then(res => {
+          this.lyrics = res.data;
+        });
     },
     isSeleted(seletedArtist) {
       return this.seletedArtist === seletedArtist;
@@ -94,6 +98,14 @@ export default {
 </script>
 
 <style>
+.lyrics-show {
+  max-width: 1000px;
+  height: auto;
+  max-width: 1200px;
+  padding-top: 60px;
+  transition: height 2s;
+}
+
 .lyrics-title {
   font-size: 40px;
   color: white;

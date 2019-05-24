@@ -56,8 +56,8 @@ def word_choice(sel):
     keys = sel.keys()
     return random.choice(list(keys))
  
-lyric_file = "%s.txt"%artist
-dict_file = "markov-%s.json"%artist
+lyric_file = os.path.abspath('.\public\python_module\gen_lyric') + "\%s.txt"%artist
+dict_file = os.getcwd() + "markov-%s.json"%artist
 if not os.path.exists(dict_file):
     fp = codecs.open(lyric_file, "r", encoding="utf-8")
     soup = BeautifulSoup(fp, "lxml")
@@ -98,7 +98,7 @@ lyric_result = gen_lyric()
 
 while(True):
     if(len(lyric_result) > 10):
-        print(lyric_result)
+        print(lyric_result);
         sys.exit(0)
     else:
         continue
