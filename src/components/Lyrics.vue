@@ -1,6 +1,6 @@
 <template>
-  <v-layout justify-center align-center column>
-    <v-flex fluid style="width:100%; background: linear-gradient(#9C27B0, #D81B60)" elevation-5>
+  <v-layout justify-center column>
+    <v-flex fluid style="width:100%; background: linear-gradient(#FF6F61, #D81B60)" elevation-5>
       <v-container id="artist-list">
         <div class="lyrics-title text-shadow">가수를 선택해보세요.</div>
         <v-layout row wrap justify-center text-xs-center>
@@ -36,7 +36,7 @@
     </v-flex>
 
     <v-layout id="showLyrics" v-if="seletedArtist != -1" pa-0 wrap row justify-center>
-      <v-flex pa-3 xs12 sm12 md6 lg6 justify-center style>
+      <v-flex pa-3 xs12 sm12 md6 lg5 xl5 justify-center>
         <v-card>
           <v-card-title primary-title>
             <v-layout column>
@@ -50,7 +50,7 @@
           </v-card-title>
         </v-card>
       </v-flex>
-      <v-flex row pa-3 xs12 sm12 md6 lg6 style>
+      <v-flex row pa-3 xs12 sm12 md6 lg5 xl5>
         <v-card>
           <v-card-title primary-title>
             <v-layout pa-3 column>
@@ -144,7 +144,6 @@ export default {
   margin-right: 10px;
 }
 #showLyrics {
-  max-width: 1500px;
 }
 
 #showLyrics img {
@@ -152,9 +151,7 @@ export default {
 }
 .lyrics-show {
   background-color: white;
-  max-width: 1000px;
   height: auto;
-  max-width: 1200px;
   padding-top: 60px;
   transition: height 2s;
 }

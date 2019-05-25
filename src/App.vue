@@ -14,14 +14,10 @@
         <v-btn flat to="/chart" class="subheading white--text">차트</v-btn>
       </v-toolbar-items>
       <v-toolbar-items class="hidden-sm-and-down headline">
-        <v-btn flat to="/explore" class="subheading white--text">음원검색</v-btn>
+        <v-btn flat to="/explore" class="subheading white--text">가사검색</v-btn>
       </v-toolbar-items>
       <v-toolbar-items class="hidden-sm-and-down headline">
         <v-btn flat to="/lyrics" class="subheading white--text">가사생성</v-btn>
-      </v-toolbar-items>
-      <v-spacer></v-spacer>
-      <v-toolbar-items class="hidden-sm-and-down headline">
-        <v-btn flat to class="subheading white--text">도움말</v-btn>
       </v-toolbar-items>
     </v-toolbar>
 
@@ -114,9 +110,8 @@ export default {
       drawerItems: [
         { title: "홈", url: "/" },
         { title: "차트", url: "/chart" },
-        { title: "음원검색", url: "/explore" },
-        { title: "가사생성", url: "/lyrics" },
-        { title: "도움말", url: "" }
+        { title: "가사검색", url: "/explore" },
+        { title: "가사생성", url: "/lyrics" }
       ],
       drawer: false
     };

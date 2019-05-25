@@ -2,130 +2,50 @@
   <v-container style="maxWidth: 1260px;">
     <v-layout row wrap>
       <v-flex xs12 class="text-xs-center" pa-4>
-        <h1>제목1</h1>
+        <h1>Music</h1>
       </v-flex>
-      <v-flex xs12 sm4 pa-1>
+      <v-flex xs12 sm4 pa-2>
         <v-card>
           <v-card-title primary-title>
             <v-layout column>
-              <div class="headline">소개1</div>
-              <div>여기에 소개할 말이 들어갑니다.
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-              </div>
-            </v-layout>
-          </v-card-title>
-        </v-card>
-      </v-flex>
-      <v-flex xs12 sm4 pa-1>
-        <v-card>
-          <v-card-title primary-title>
-            <v-layout column>
-              <div class="headline">소개2</div>
-              <div>여기에 소개할 말이 들어갑니다.
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-              </div>
-            </v-layout>
-          </v-card-title>
-        </v-card>
-      </v-flex>
-      <v-flex xs12 sm4 pa-1>
-        <v-card>
-          <v-card-title primary-title>
-            <v-layout column>
-              <div class="headline">소개3</div>
-              <div>여기에 소개할 말이 들어갑니다.
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-              </div>
-            </v-layout>
-          </v-card-title>
-        </v-card>
-      </v-flex>
+              <div class="headline">차트분석</div>
+              <br>
+              <div class="first">빅데이터 분석으로 생각지도 못한것을 발견을 해보세요.</div>
 
-      <v-flex xs12 class="text-xs-center" pa-4>
-        <h1>제목2</h1>
-      </v-flex>
-      <v-flex md4 xs12 pa-1>
-        <v-card>
-          <v-card-title primary-title>
-            <v-layout column>
-              <div class="headline">소개1</div>
-              <div>여기에 소개할 말이 들어갑니다.
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-              </div>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn to="/chart" flat color="primary">더 알아보기</v-btn>
+              </v-card-actions>
             </v-layout>
           </v-card-title>
         </v-card>
       </v-flex>
-      <v-flex md4 xs12 pa-1>
+      <v-flex xs12 sm4 pa-2>
         <v-card>
           <v-card-title primary-title>
             <v-layout column>
-              <div class="headline">소개2</div>
-              <div>여기에 소개할 말이 들어갑니다.
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-              </div>
+              <div class="headline">가사검색</div>
+              <br>
+              <div class="first">어렴풋이 기억나는 가사를 검색해보세요.</div>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn to="/explore" flat color="primary">더 알아보기</v-btn>
+              </v-card-actions>
             </v-layout>
           </v-card-title>
         </v-card>
       </v-flex>
-      <v-flex md4 xs12 pa-1>
+      <v-flex xs12 sm4 pa-2>
         <v-card>
           <v-card-title primary-title>
             <v-layout column>
-              <div class="headline">소개3</div>
-              <div>여기에 소개할 말이 들어갑니다.
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-              </div>
-            </v-layout>
-          </v-card-title>
-        </v-card>
-      </v-flex>
-      <v-flex xs12 class="text-xs-center" pa-4>
-        <h1>제목3</h1>
-      </v-flex>
-      <v-flex md12 xs12 pa-1>
-        <v-card>
-          <v-card-title primary-title>
-            <v-layout column>
-              <div class="headline">소개1</div>
-              <div>여기에 소개할 말이 들어갑니다.
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-              </div>
+              <div class="headline">가사생성</div><br>
+              <div class="first">새로운 음악적 영감을 느껴보세요.</div>
+
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn flat to="/lyrics" color="primary">더 알아보기</v-btn>
+              </v-card-actions>
             </v-layout>
           </v-card-title>
         </v-card>
@@ -139,4 +59,7 @@ export default {};
 </script>
 
 <style>
+.first {
+  height: 100px;
+}
 </style>

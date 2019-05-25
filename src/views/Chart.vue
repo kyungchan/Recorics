@@ -1,13 +1,16 @@
 <template>
-    <h1>차트</h1>
+  <Chart/>
 </template>
 
 <script>
-export default {
+import Chart from "../components/Chart";
 
-}
+export default {
+  components: {
+    Chart
+  }
+};
 </script>
 
 <style>
-
 </style>
