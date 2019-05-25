@@ -115,7 +115,7 @@ export default {
   watch: {},
   methods: {
     selectImg(seletedArtist) {
-      this.lyrics = "가사생성중...";
+      this.lyrics = "가사생성중입니다.";
       this.seletedArtist = seletedArtist;
       this.$http
         .get("/api/lyrics/" + this.artists[seletedArtist].script)

@@ -33,14 +33,15 @@ router.post("/similar", function(req, res) {
     console.log(req.body.query);
 
     pythonShell.PythonShell.run('ngram-search-lyric.py', options, function(err, results) {
-        res.writeHead(200, { 'Content-Type': 'text/html;charset=MS949' });
         if (err)
             res.end(err.toString());
-        lyrics = ''
+        result = ''
         for (i in results) {
-            lyrics += results[i] + '\n';
+            result += results[i] + '\n';
         }
-        res.end(lyrics);
+        res.end(result);
+
+        console.log(result);
     });
 });
 

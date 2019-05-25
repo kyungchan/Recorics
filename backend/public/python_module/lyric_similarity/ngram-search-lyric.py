@@ -1,4 +1,5 @@
 from openpyxl import load_workbook
+from collections import OrderedDict
 import argparse, sys, operator, os
 import json
 
@@ -68,8 +69,8 @@ three_max_track_id = track_id_list[three_max_index]
 tmp_sentence_list = []
 tmp_track_list = []
 
-print('%s'%sentence_list[three_max_index])
-print('%s/%s'%(track_artist_info_dict[three_max_track_id], track_song_info_dict[three_max_track_id]))
+print('%s|'%sentence_list[three_max_index])
+print('%s|%s|'%(track_artist_info_dict[three_max_track_id], track_song_info_dict[three_max_track_id]))
 
 tmp_sentence_list.append(sentence_list[three_max_index])
 tmp_track_list.append(three_max_track_id)
@@ -90,7 +91,6 @@ try:
     total.sort(key=lambda x:x[2], reverse=True)
 
     if len(total) >0:
-        for t in total:
-            print('%s/%s/%s/%s' % (t[0], t[1], int(t[2]*100), t[3]))
+        print(total)
 except KeyError:
     sys.exit(1)
