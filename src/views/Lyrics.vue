@@ -1,19 +1,17 @@
 <template>
-  <Artists />
+  <Lyrics/>
 </template>
 
 <script>
-  import Artists from '../components/Artists'
+import Lyrics from "../components/Lyrics";
 
-  export default {
-    
+export default {
   props: ["artist"],
-    components: {
-      Artists
-    }
+  components: {
+    Lyrics
   }
+};
 </script>
 
 <style>
-
 </style>

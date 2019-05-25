@@ -1,10 +1,10 @@
 <style>
-.mainSwiper { 
+.mainSwiper {
   height: 400px;
   width: 100%;
 }
 .banner1 {
-  background-image: url("../../public/img/banner/banner1.jpg");
+  background-image: url("../assets/banner/banner1.jpg");
   background-position: center center;
   background-size: cover;
 }

@@ -1,13 +1,16 @@
 <template>
-    <h1>음원검색</h1>
+  <Explore/>
 </template>
 
 <script>
-export default {
+import Explore from "../components/Explore";
 
-}
+export default {
+  components: {
+    Explore
+  }
+};
 </script>
 
 <style>
-
 </style>

@@ -1,10 +1,13 @@
+#-*- coding: cp949 -*-
 import codecs
 from bs4 import BeautifulSoup
 from konlpy.tag import Okt
-import os, re, json, random, sys
+import os, re, json, random
+import sys
 import time
 import argparse
 
+sys.stdout.reconfigure(encoding='utf-8')
 parser = argparse.ArgumentParser()
 parser.add_argument('artist_name', help='artist name you wanna generate lyric')
 
@@ -12,7 +15,7 @@ args = parser.parse_args()
 
 artist = args.artist_name
 
-# ë§ˆë¥´ì½”í”„ ì²´ì¸ ë”•ì…”ë„ˆë¦¬ ë§Œë“¤ê¸° (ì„¸ ë‹¨ì–´ê°€ í•œ ì„¸íŠ¸)
+# ¸¶¸£ÄÚÇÁ Ã¼ÀÎ µñ¼Å³Ê¸® ¸¸µé±â (¼¼ ´Ü¾î°¡ ÇÑ ¼¼Æ®)
 def make_dic(words):
     tmp = ["@"]
     dic = {}
@@ -26,7 +29,7 @@ def make_dic(words):
             continue
     return dic
 
-# ë”•ì…”ë„ˆë¦¬ì— ë°ì´í„° ë“±ë¡í•˜ê¸° 
+# µñ¼Å³Ê¸®¿¡ µ¥ÀÌÅÍ µî·ÏÇÏ±â 
 def set_word3(dic, s3):
     w1, w2, w3 = s3
     if not w1 in dic: dic[w1] = {}
@@ -34,7 +37,7 @@ def set_word3(dic, s3):
     if not w3 in dic[w1][w2]: dic[w1][w2][w3] = 0
     dic[w1][w2][w3] += 1
 
-# ë¬¸ìž¥ ë§Œë“¤ê¸° 
+# ¹®Àå ¸¸µé±â 
 def make_sentence(dic):
     ret = []
     if not "@" in dic: return "no dic" 
@@ -59,23 +62,23 @@ def word_choice(sel):
 lyric_file = os.path.abspath('.\public\python_module\gen_lyric') + "\%s.txt"%artist
 dict_file = os.getcwd() + "markov-%s.json"%artist
 if not os.path.exists(dict_file):
-    fp = codecs.open(lyric_file, "r", encoding="utf-8")
+    fp = codecs.open(lyric_file, "r", encoding="utf8")
     soup = BeautifulSoup(fp, "lxml")
     text = soup.getText()
-    text = text.replace("â€¦", "") # í˜„ìž¬ koNLPyê°€ â€¦ì„ êµ¬ë‘ì ìœ¼ë¡œ ìž¡ì§€ ëª»í•˜ëŠ” ë¬¸ì œ ìž„ì‹œ í•´ê²°
-    # í˜•íƒœì†Œ ë¶„ì„
+    text = text.replace("¡¦", "") # ÇöÀç koNLPy°¡ ¡¦À» ±¸µÎÁ¡À¸·Î ÀâÁö ¸øÇÏ´Â ¹®Á¦ ÀÓ½Ã ÇØ°á
+    # ÇüÅÂ¼Ò ºÐ¼®
     okt = Okt()
     malist = okt.pos(text, norm=True)
     words = []
     for word in malist:
-        # êµ¬ë‘ì  ë“±ì€ ëŒ€ìƒì—ì„œ ì œì™¸(ë‹¨ ì„¸ë¯¸ì½œë¡  í¬í•¨)
+        # ±¸µÎÁ¡ µîÀº ´ë»ó¿¡¼­ Á¦¿Ü(´Ü ¼¼¹ÌÄÝ·Ð Æ÷ÇÔ)
         if not word[1] in ["Punctuation"]:
             words.append(word[0])
         if word[0] == ";":
             words.append(word[0])
-    # ë”•ì…”ë„ˆë¦¬ ìƒì„±
+    # µñ¼Å³Ê¸® »ý¼º
     dic = make_dic(words)
-    json.dump(dic, open(dict_file,"w", encoding="utf-8"))
+    json.dump(dic, open(dict_file,"w", encoding="utf8"))
 else:
     dic = json.load(open(dict_file,"r"))
 
@@ -98,7 +101,7 @@ lyric_result = gen_lyric()
 
 while(True):
     if(len(lyric_result) > 10):
-        print(lyric_result);
+        print(lyric_result)
         sys.exit(0)
     else:
         continue
