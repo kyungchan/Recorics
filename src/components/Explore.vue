@@ -46,7 +46,6 @@
               <td>{{ props.item.artist }}</td>
               <td>{{ props.item.title }}</td>
               <td>{{ props.item.quote }}</td>
-              <td class="text-xs-right">{{ props.item.similarity}}</td>
             </template>
           </v-data-table>
         </v-flex>
@@ -79,12 +78,6 @@ export default {
           align: "center",
           sortable: true,
           value: "quote"
-        },
-        {
-          text: "유사도",
-          align: "righ",
-          sortable: true,
-          value: "similartiy"
         }
       ],
       message: "",
@@ -117,6 +110,9 @@ export default {
         for (var i in this.resultList) {
           var item = this.resultList[i].split(",");
           this.result = item;
+          if (i == this.resultList.length - 1) {
+            item[3] = item[3].substring(0, item[3].length - 1);
+          }
           this.list.push({
             artist: item[0].trimLeft(),
             title: item[1].trimLeft(),
