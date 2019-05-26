@@ -77,7 +77,7 @@ def word_choice(sel):
 
 
 lyric_file = os.path.abspath(
-    '.\public\python_module\gen_lyric') + "\%s.txt" % artist
+    './public/python_module/gen_lyric') + "/%s.txt" % artist
 dict_file = os.getcwd() + "markov-%s.json" % artist
 if not os.path.exists(dict_file):
     fp = codecs.open(lyric_file, "r", encoding="utf8")

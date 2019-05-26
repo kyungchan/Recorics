@@ -27,7 +27,7 @@
           <v-card>
             <v-card-title>
               <v-layout column>
-                <h2>혹시 이곡을 찾으셨나요?</h2>
+                <h2>혹시 이 곡을 찾으셨나요?</h2>
                 <br>
                 <h3>가수: {{resultSong}}</h3>
                 <h3>제목: {{resultArtist}}</h3>
