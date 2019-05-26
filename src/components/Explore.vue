@@ -22,29 +22,34 @@
         <v-btn @click="similarSearch()" pa-0>검색</v-btn>
       </v-layout>
       {{message}}
-      <v-layout v-if="isShow != 0" id="result" column pa-2>
-        <v-card>
-          <v-card-title>
-            <v-layout column>
-              <h3>혹시 이곡을 찾으셨나요?</h3>
-              <br>
-              가수: {{resultSong}}
-              <br>
-              제목: {{resultArtist}}
-              <br>
-              가사: {{resultQuote}}
-              <br>
-            </v-layout>
-          </v-card-title>
-        </v-card>
-        <v-data-table hide-actions :headers="headers" :items="list" class="elevation-1">
-          <template v-slot:items="props">
-            <td>{{ props.item.artist }}</td>
-            <td>{{ props.item.title }}</td>
-            <td>{{ props.item.quote }}</td>
-            <td class="text-xs-right">{{ props.item.similarity}}</td>
-          </template>
-        </v-data-table>
+      <v-layout v-if="isShow != 0" id="result" row wrap>
+        <v-flex xs12 sm12 md6 lg6 xl6 pa-2>
+          <v-card>
+            <v-card-title>
+              <v-layout column>
+                <h3>혹시 이곡을 찾으셨나요?</h3>
+                <br>
+                가수: {{resultSong}}
+                <br>
+                제목: {{resultArtist}}
+                <br>가사:
+                <br>
+                <p v-html="resultQuote"></p>
+                <br>
+              </v-layout>
+            </v-card-title>
+          </v-card>
+        </v-flex>
+        <v-flex xs12 sm12 md6 lg6 xl6 pa-2>
+          <v-data-table hide-actions :headers="headers" :items="list" class="elevation-1">
+            <template v-slot:items="props">
+              <td>{{ props.item.artist }}</td>
+              <td>{{ props.item.title }}</td>
+              <td>{{ props.item.quote }}</td>
+              <td class="text-xs-right">{{ props.item.similarity}}</td>
+            </template>
+          </v-data-table>
+        </v-flex>
       </v-layout>
     </v-container>
   </v-layout>
@@ -100,7 +105,7 @@ export default {
         this.isShow = 1;
         this.result = res.data;
         var resultSet = this.result.split("|");
-        this.resultQuote = resultSet[0];
+        this.resultQuote = resultSet[0].replace(/\//gi, "<br />");
         this.resultSong = resultSet[1];
         this.resultArtist = resultSet[2];
         this.resultList = resultSet[3]
@@ -108,6 +113,7 @@ export default {
           .replace(/\[/gi, "")
           .replace(/'/gi, "")
           .split("],");
+        this.list.c;
         for (var i in this.resultList) {
           var item = this.resultList[i].split(",");
           this.result = item;
@@ -115,7 +121,7 @@ export default {
             artist: item[0].trimLeft(),
             title: item[1].trimLeft(),
             similarity: item[2].trimLeft() * 100.0,
-            quote: item[3].trimLeft()
+            quote: item[3]
           });
         }
       });
