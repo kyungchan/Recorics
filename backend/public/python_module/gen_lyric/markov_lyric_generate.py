@@ -1,13 +1,15 @@
-#-*- coding: cp949 -*-
+# -*- coding: utf-8 -*-
 import codecs
 from bs4 import BeautifulSoup
 from konlpy.tag import Okt
-import os, re, json, random
+import os
+import re
+import json
+import random
 import sys
 import time
 import argparse
 
-sys.stdout.reconfigure(encoding='utf-8')
 parser = argparse.ArgumentParser()
 parser.add_argument('artist_name', help='artist name you wanna generate lyric')
 
@@ -15,32 +17,44 @@ args = parser.parse_args()
 
 artist = args.artist_name
 
-# ¸¶¸£ÄÚÇÁ Ã¼ÀÎ µñ¼Å³Ê¸® ¸¸µé±â (¼¼ ´Ü¾î°¡ ÇÑ ¼¼Æ®)
+# ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¼ï¿½ï¿½ ï¿½ï¿½Å³Ê¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ ï¿½Ü¾î°¡ ï¿½ï¿½ ï¿½ï¿½Æ®)
+
+
 def make_dic(words):
     tmp = ["@"]
     dic = {}
     for word in words:
         tmp.append(word)
-        if len(tmp) < 3: continue
-        if len(tmp) > 3: tmp = tmp[1:]
+        if len(tmp) < 3:
+            continue
+        if len(tmp) > 3:
+            tmp = tmp[1:]
         set_word3(dic, tmp)
         if word == ";":
             tmp = ["@"]
             continue
     return dic
 
-# µñ¼Å³Ê¸®¿¡ µ¥ÀÌÅÍ µî·ÏÇÏ±â 
+# ï¿½ï¿½Å³Ê¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
+
+
 def set_word3(dic, s3):
     w1, w2, w3 = s3
-    if not w1 in dic: dic[w1] = {}
-    if not w2 in dic[w1]: dic[w1][w2] = {}
-    if not w3 in dic[w1][w2]: dic[w1][w2][w3] = 0
+    if not w1 in dic:
+        dic[w1] = {}
+    if not w2 in dic[w1]:
+        dic[w1][w2] = {}
+    if not w3 in dic[w1][w2]:
+        dic[w1][w2][w3] = 0
     dic[w1][w2][w3] += 1
 
-# ¹®Àå ¸¸µé±â 
+# ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+
+
 def make_sentence(dic):
     ret = []
-    if not "@" in dic: return "no dic" 
+    if not "@" in dic:
+        return "no dic"
     top = dic["@"]
     w1 = word_choice(top)
     w2 = word_choice(top[w1])
@@ -49,38 +63,44 @@ def make_sentence(dic):
     while True:
         w3 = word_choice(dic[w1][w2])
         ret.append(w3)
-        if w3 == ";": break
+        if w3 == ";":
+            break
         w1, w2 = w2, w3
     ret = " ".join(ret)
 
     return ret
 
+
 def word_choice(sel):
     keys = sel.keys()
     return random.choice(list(keys))
- 
-lyric_file = os.path.abspath('.\public\python_module\gen_lyric') + "\%s.txt"%artist
-dict_file = os.getcwd() + "markov-%s.json"%artist
+
+
+lyric_file = os.path.abspath(
+    '.\public\python_module\gen_lyric') + "\%s.txt" % artist
+dict_file = os.getcwd() + "markov-%s.json" % artist
 if not os.path.exists(dict_file):
     fp = codecs.open(lyric_file, "r", encoding="utf8")
     soup = BeautifulSoup(fp, "lxml")
     text = soup.getText()
-    text = text.replace("¡¦", "") # ÇöÀç koNLPy°¡ ¡¦À» ±¸µÎÁ¡À¸·Î ÀâÁö ¸øÇÏ´Â ¹®Á¦ ÀÓ½Ã ÇØ°á
-    # ÇüÅÂ¼Ò ºÐ¼®
+    # ï¿½ï¿½ï¿½ï¿½ koNLPyï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ó½ï¿½ ï¿½Ø°ï¿½
+    text = text.replace("ï¿½ï¿½", "")
+    # ï¿½ï¿½ï¿½Â¼ï¿½ ï¿½Ð¼ï¿½
     okt = Okt()
     malist = okt.pos(text, norm=True)
     words = []
     for word in malist:
-        # ±¸µÎÁ¡ µîÀº ´ë»ó¿¡¼­ Á¦¿Ü(´Ü ¼¼¹ÌÄÝ·Ð Æ÷ÇÔ)
+        # ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ó¿¡¼ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ý·ï¿½ ï¿½ï¿½ï¿½ï¿½)
         if not word[1] in ["Punctuation"]:
             words.append(word[0])
         if word[0] == ";":
             words.append(word[0])
-    # µñ¼Å³Ê¸® »ý¼º
+    # ï¿½ï¿½Å³Ê¸ï¿½ ï¿½ï¿½ï¿½ï¿½
     dic = make_dic(words)
-    json.dump(dic, open(dict_file,"w", encoding="utf8"))
+    json.dump(dic, open(dict_file, "w", encoding="utf8"))
 else:
-    dic = json.load(open(dict_file,"r"))
+    dic = json.load(open(dict_file, "r"))
+
 
 def gen_lyric():
     s = make_sentence(dic)
@@ -88,14 +108,15 @@ def gen_lyric():
 
     s_list = s.split('\n')
 
-    s_list = list(filter(lambda a : a != '', s_list))   
-    s_list = list(filter(lambda a : a.isspace() != True, s_list)) 
+    s_list = list(filter(lambda a: a != '', s_list))
+    s_list = list(filter(lambda a: a.isspace() != True, s_list))
     s_list = [re.sub(' +', ' ', ly) for ly in s_list]
     s_list = [ly.strip() for ly in s_list]
 
     s = '\n'.join(s_list)
-   
+
     return s
+
 
 lyric_result = gen_lyric()
 

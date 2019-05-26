@@ -27,13 +27,11 @@
           <v-card>
             <v-card-title>
               <v-layout column>
-                <h3>혹시 이곡을 찾으셨나요?</h3>
+                <h2>혹시 이곡을 찾으셨나요?</h2>
                 <br>
-                가수: {{resultSong}}
-                <br>
-                제목: {{resultArtist}}
-                <br>가사:
-                <br>
+                <h3>가수: {{resultSong}}</h3>
+                <h3>제목: {{resultArtist}}</h3>
+                <h3>가사:</h3>
                 <p v-html="resultQuote"></p>
                 <br>
               </v-layout>
@@ -41,13 +39,18 @@
           </v-card>
         </v-flex>
         <v-flex xs12 sm12 md6 lg6 xl6 pa-2>
-          <v-data-table hide-actions :headers="headers" :items="list" class="elevation-1">
-            <template v-slot:items="props">
-              <td>{{ props.item.artist }}</td>
-              <td>{{ props.item.title }}</td>
-              <td>{{ props.item.quote }}</td>
-            </template>
-          </v-data-table>
+          <v-card>
+            <v-card-title>
+              <h2 style="margin-bottom:25px">다른 유사한 가사</h2>
+              <v-data-table hide-actions :headers="headers" :items="list" class="elevation-1">
+                <template v-slot:items="props">
+                  <td>{{ props.item.artist }}</td>
+                  <td>{{ props.item.title }}</td>
+                  <td>{{ props.item.quote }}</td>
+                </template>
+              </v-data-table>
+            </v-card-title>
+          </v-card>
         </v-flex>
       </v-layout>
     </v-container>

@@ -6,7 +6,6 @@ import operator
 import os
 import json
 
-sys.stdout.reconfigure(encoding='utf-8')
 parser = argparse.ArgumentParser()
 parser.add_argument(
     'data', help='lyric data you wanna compare with specific sentence you will provide')
