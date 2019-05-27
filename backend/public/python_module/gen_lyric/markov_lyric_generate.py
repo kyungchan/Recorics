@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import codecs
 from bs4 import BeautifulSoup
 from konlpy.tag import Okt
@@ -74,10 +73,11 @@ def make_sentence(dic):
 def word_choice(sel):
     keys = sel.keys()
     return random.choice(list(keys))
-
+#lyric_file = os.path.abspath(
+#    './public/python_module/gen_lyric') + "/%s.txt" % artist
 
 lyric_file = os.path.abspath(
-    './public/python_module/gen_lyric') + "/%s.txt" % artist
+    '.\public\python_module\gen_lyric') + "\%s.txt" % artist
 dict_file = os.getcwd() + "markov-%s.json" % artist
 if not os.path.exists(dict_file):
     fp = codecs.open(lyric_file, "r", encoding="utf8")
@@ -118,10 +118,9 @@ def gen_lyric():
     return s
 
 
-lyric_result = gen_lyric()
-
 while(True):
-    if(len(lyric_result) > 10):
+    lyric_result = gen_lyric()
+    if(len(lyric_result) > 500 and len(lyric_result) <1000):
         print(lyric_result)
         sys.exit(0)
     else:

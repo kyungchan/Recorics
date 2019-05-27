@@ -14,8 +14,11 @@ args = parser.parse_args()
 data = args.data
 base = data
 
+#wb = load_workbook(os.path.abspath(
+#    './public/python_module/lyric_similarity') + '/lyric_data.xlsx')
+
 wb = load_workbook(os.path.abspath(
-    './public/python_module/lyric_similarity') + '/lyric_data.xlsx')
+    '.\public\python_module\lyric_similarity') + '\lyric_data.xlsx')
 track_sheet = wb.worksheets[0]
 sentence_sheet = wb.worksheets[1]
 max_row = sentence_sheet.max_row
@@ -90,7 +93,7 @@ max_song_start_index = track_id_list.index(three_max_track_id)
 for i in range(0, max_song_line_number):
     print(sentence_list[max_song_start_index + i] + '/')
 
-print('%s|' % sentence_list[three_max_index])
+print('|%s|' % sentence_list[three_max_index])
 print('%s|%s|' % (
     track_artist_info_dict[three_max_track_id], track_song_info_dict[three_max_track_id]))
 

@@ -31,8 +31,9 @@
                 <br>
                 <h3>가수: {{resultSong}}</h3>
                 <h3>제목: {{resultArtist}}</h3>
+                <h3>가장 유사한 문장: {{resultQuote}}</h3>
                 <h3>가사:</h3>
-                <p v-html="resultQuote"></p>
+                <p v-html="resultLyrics"></p>
                 <br>
               </v-layout>
             </v-card-title>
@@ -86,6 +87,7 @@ export default {
       message: "",
       list: [],
       result: "",
+      resultLyrics: "",
       resultQuote: "",
       resultArtist: "",
       resultSong: "",
@@ -101,15 +103,17 @@ export default {
         this.isShow = 1;
         this.result = res.data;
         var resultSet = this.result.split("|");
-        this.resultQuote = resultSet[0].replace(/\//gi, "<br />");
-        this.resultSong = resultSet[1];
-        this.resultArtist = resultSet[2];
-        this.resultList = resultSet[3]
-          .substring(2, resultSet[3].length - 2)
+        this.resultLyrics = resultSet[0].replace(/\//gi, "<br />");
+        this.resultQuote = resultSet[1];
+        this.resultSong = resultSet[2];
+        this.resultArtist = resultSet[3];
+        this.resultList = resultSet[4]
+          .substring(2, resultSet[4].length - 2)
           .replace(/\[/gi, "")
           .replace(/'/gi, "")
           .split("],");
         this.list.c;
+        this.list = [];
         for (var i in this.resultList) {
           var item = this.resultList[i].split(",");
           this.result = item;
