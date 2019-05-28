@@ -75,7 +75,9 @@
 
           <v-card-text class="white--text text-xs-right">
             &copy;2019 —
-            <strong>Recorics</strong>
+            <a href="/pamphlet">
+              <strong>Recorics</strong>
+            </a>
           </v-card-text>
         </v-card>
       </v-container>

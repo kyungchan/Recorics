@@ -4,6 +4,7 @@ import Home from "./views/Home.vue";
 import Chart from "./views/Chart.vue";
 import Explore from "./views/Explore.vue";
 import Lyrics from "./views/Lyrics.vue";
+import Pamphlet from "./views/Pamphlet.vue";
 import NProgress from "nprogress";
 
 Vue.use(Router);
@@ -34,6 +35,11 @@ const router = new Router({
             path: "/lyrics/:artist",
             name: "lyricsArtist",
             component: Lyrics,
+            props: true
+        }, {
+            path: "/pamphlet",
+            name: "pamphlet",
+            component: Pamphlet,
             props: true
         }
     ]

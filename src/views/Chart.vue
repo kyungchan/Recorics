@@ -1,5 +1,7 @@
 <template>
-  <Chart/>
+  <v-div>
+    <Chart/>
+  </v-div>
 </template>
 
 <script>
