@@ -26,7 +26,7 @@
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
     <v-container wrap>
-      <v-flex sm12 md12 lg12 xl12 pa-1>
+      <v-flex d-flex sm12 md12 lg12 xl12 pa-1>
         <v-layout column wrap align-end>
           <v-select :items="years" label="연도" v-model="year"></v-select>
         </v-layout>
@@ -62,7 +62,7 @@
             </v-card-title>
           </v-card>
         </v-flex>
-        <v-flex xs12 sm12 md6 lg6 xl6 pa-1>
+        <v-flex d-flex xs12 sm12 md6 lg6 xl6 pa-1>
           <v-card>
             <v-card-title>
               <v-layout column>

@@ -26,6 +26,9 @@
       <v-spacer></v-spacer>
       <router-link to="/">
         <v-toolbar-title class="white--text">Recorics</v-toolbar-title>
+        <!-- 
+        <v-toolbar-title class="white--text">2019-1학기 명지대학교 컴퓨터공학과 캡스톤 디자인1</v-toolbar-title>
+        -->
       </router-link>
       <v-spacer></v-spacer>
       <div style="width:46px;"></div>
@@ -70,6 +73,16 @@
             <br>팀원: 김경찬, 김한빈, 임상윤
             <br>
             <br>
+            <!--
+              Saturday Dev팀
+            <br>팀장: 60132266 박신우
+            <br>팀원: 60142641 김경찬, 60142267 김한빈, 60142327 임상윤
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            -->
           </span>
           <v-divider></v-divider>
 

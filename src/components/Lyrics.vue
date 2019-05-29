@@ -36,7 +36,7 @@
     </v-flex>
 
     <v-layout id="showLyrics" v-if="seletedArtist != -1" pa-0 wrap row justify-center>
-      <v-flex pa-3 xs12 sm12 md6 lg5 xl5 justify-center>
+      <v-flex pa-3 d-flex xs12 sm12 md6 lg5 xl5 justify-center>
         <v-card>
           <v-card-title primary-title>
             <v-layout column>
@@ -50,7 +50,7 @@
           </v-card-title>
         </v-card>
       </v-flex>
-      <v-flex row pa-3 xs12 sm12 md6 lg5 xl5>
+      <v-flex row d-flex pa-3 xs12 sm12 md6 lg5 xl5>
         <v-card>
           <v-card-title primary-title>
             <v-layout pa-3 column>
