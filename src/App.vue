@@ -85,7 +85,6 @@
             -->
           </span>
           <v-divider></v-divider>
-
           <v-card-text class="white--text text-xs-right">
             &copy;2019 —
             <a href="/pamphlet">

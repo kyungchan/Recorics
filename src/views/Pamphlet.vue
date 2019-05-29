@@ -14,20 +14,23 @@
         <v-card>
           <v-card-title>
             <div class="display-1" style="margin-bottom:20px">프로젝트 개요</div>
-            <div
-              class="title"
-            >Recorics는 지금 대부분의 음원 플랫폼들의 제목, 가수 이름 같은 정보에 집중되어 있는 시선에서 탈피한 기존에 없었던 새로운 음원 플랫폼이다. 음원에서 가사가 표현해내는 음원의 분위기와 정보를 AI를 이용한 분석을 통해, 사용자들에게 최적화 하고, 모두가 자신에게 맞춰진 음원서비스를 제공한다.</div>
+            <div class="title">
+              Recorics는 대부분의 음원 서비스가 곡 제목, 가수 이름 등의 정보 위주인 것에서 탈피하여, 차별화된 기능을 제공하는 새로운 음원 플랫폼이다.
+              음원의 가사에 주목한 프로젝트이자 머신러닝 기반의 기능을 제공하는것으로 새로운 사용자 경험을 제공한다.
+            </div>
           </v-card-title>
         </v-card>
       </v-flex>
       <v-flex md6 lg6 xl6 pa-2>
         <v-card>
           <v-card-title>
-            <div class="display-1" style="margin-bottom:20px">프로젝트 배경 및 목표</div>
+            <div class="display-1" style="width: 100%; margin-bottom:20px">프로젝트 배경 및 목표</div>
             <div class="title">
-              배경 : 음악은 현대인들의 생활에 깊숙하게 녹아들어 있다. 양질의 서비스를 제공하는 많은 음원 서비스를 출현함에 따라서 1인 음원 소비량이 증가하고 있다.
+              배경 - 음악은 현대인들의 생활에 깊숙하게 녹아들어 있다.
+              <br>&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;양질의 서비스를 제공하는 음원 서비스들의 출현에 따라 1인 음원 소비량도 지속적으로 증가하고 있다.
               <br>
-              <br>목표 : 차별화된 기능과 편의성을 제공해 음원 시장에서 충족되지 않았던 사용자의 요구사항을 해결하고, 다양한 음원 플랫폼 사이에서 독창성과 경쟁력을 가진다. 본 프로젝트는 기존에 없었던 새로운 음원 플랫폼으로 사용자들에게 다가가는 것을 목표로 한다.
+              <br>목표 - 차별화된 기능을 제공하는 것을 통해, 수많은 음원 서비스들 사이에서 독자적인 입지를 확보한다.
+              <br>&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;본 프로젝트는 기존에 없었던 새로운 음원 플랫폼으로써 음원 시장의 새로운 영역을 개척하는 것을 목표로 한다.
             </div>
           </v-card-title>
         </v-card>
@@ -158,11 +161,11 @@
       <v-flex md4 lg4 xl4 pa-2 d-flex>
         <v-card>
           <v-card-title>
-            <div class="display-1" style="width: 100%; margin-bottom:20px">차트 기능</div>
+            <div class="display-1" style="width: 100%; margin-bottom:20px">차트분석 기능</div>
             <div class="title">
               <img src="../assets/pamphlet/chart.jpg" style="width: 100%; margin: 0;">
               <div style="width:100%; text-align: center;">
-                그림4. 차트 기능 페이지
+                그림4. 차트분석 기능 페이지
                 <br>
               </div>
               <br>
@@ -184,7 +187,7 @@
               <br>
               <br>· 사용자가 입력한 문장과의 유사도를 측정하여 노래를 검색
               <br>· 검색한 노래의 유사도를 기준으로 비슷한 노래를 추천
-              <br>· 유사도 분석 AI 딥러닝 알고리즘을 통한 가사 분석
+              <br>· 유사도 분석 알고리즘을 통한 가사 분석
             </div>
           </v-card-title>
         </v-card>
@@ -200,9 +203,9 @@
                 <br>
               </div>
               <br>
-              <br>· 특정한 가수의 곡 가사를 형태소 분석
-              <br>· 분석 결과를 바탕으로 해당 가수의 가사 학습
-              <br>· 사용자가 선택한 가수의 스타일에 맞는 가사를 생성
+              <br>· 특정 가수의 곡 가사를 형태소 분석
+              <br>· 분석 결과를 바탕으로 해당 가수의 작사 스타일 학습
+              <br>· 사용자가 선택한 가수의 스타일에 맞는 가사 생성
             </div>
           </v-card-title>
         </v-card>
@@ -222,20 +225,24 @@
                   style="margin-bottom:20px; width:100%;"
                 >프로젝트로 얻을 수 있는 미래 효과 및 결론</div>
                 <div class="title">
-                  비슷한 서비스들을 제공하는 기존 플랫폼과 다르게 가사에 초점을 맞췄다.
-                  <br>전에 없었던 이 음원 서비스는 거대한 음원시장에서의 경쟁력을 갖출 것이다.
-                  <br>또 가사에 기반한 분석을 통해 사용자들에게 신선한 경험을 제공해서,
-                  <br>본 프로젝트는 고객들, 더 나아가서는 음악을 듣는 모든 사람들이 음악을 바라보는 시선에 영향을 줄 것이다.
+                  가사에 초점을 맞췄으며, 머신러닝 기반의 기능을 제공하는 본 서비스는
+                  <br>사용자에게 전혀 새로운 경험을 제공한다.
+                  <br>머신러닝이 분석한 차트 분석 결과를 통해 역사 속에서 의외의 결과를 얻고,
+                  <br>노랫말에 대한 희미한 기억만으로도 곡을 찾고,
+                  <br>비슷한 문장을 가진 곡을 추천 받고,
+                  <br>특정 가수 스타일의 가사를 매번 생성하는 것을 통해 다른 차원의 음악적 영감을 얻는다.
+                  <br>
+                  <br>본 프로젝트는 음악을 소비하는 방식에 커다란 변화를 가져다 줄 것이다.
                 </div>
               </v-layout>
 
               <img
                 src="../assets/pamphlet/streamingmarket.jpg"
-                style=" margin-right:50px; height:300px"
+                style=" margin-right:50px; height:310px"
               >
               <img
                 src="../assets/pamphlet/streaminggrowth.jpg"
-                style="height:300px; margin-right:100px"
+                style="height:310px; margin-right:200px"
               >
             </v-layout>
           </v-card-title>
