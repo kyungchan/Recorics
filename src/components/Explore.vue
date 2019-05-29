@@ -23,7 +23,7 @@
       </v-layout>
       {{message}}
       <v-layout v-if="isShow != 0" id="result" row wrap>
-        <v-flex xs12 sm12 md6 lg6 xl6 pa-2>
+        <v-flex xs12 sm12 md6 lg6 xl6 pa-2 d-flex>
           <v-card>
             <v-card-title>
               <v-layout column>
@@ -39,7 +39,7 @@
             </v-card-title>
           </v-card>
         </v-flex>
-        <v-flex xs12 sm12 md6 lg6 xl6 pa-2>
+        <v-flex xs12 sm12 md6 lg6 xl6 pa-2 d-flex>
           <v-card>
             <v-card-title>
               <h2 style="margin-bottom:25px">다른 유사한 가사</h2>

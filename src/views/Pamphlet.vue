@@ -238,11 +238,11 @@
 
               <img
                 src="../assets/pamphlet/streamingmarket.jpg"
-                style=" margin-right:50px; height:310px"
+                style=" margin-right:50px; height:300px"
               >
               <img
                 src="../assets/pamphlet/streaminggrowth.jpg"
-                style="height:310px; margin-right:200px"
+                style="height:300px; margin-right:200px"
               >
             </v-layout>
           </v-card-title>
