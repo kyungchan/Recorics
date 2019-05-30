@@ -2,6 +2,7 @@ from openpyxl import load_workbook
 from collections import OrderedDict
 import argparse
 import sys
+import json
 import operator
 import os
 from collections import OrderedDict
@@ -106,21 +107,20 @@ jsonData["list"] = []
 tmp_sentence_list.append(sentence_list[three_max_index])
 tmp_track_list.append(three_max_track_id)
 
-# total = 이중리스트
-# total = [[아티스트, 곡, 유사도, 문장]]
-total = []
-
 try:
     for i in range(0, len(three_gram_score_list)):
         if three_gram_score_list[i] > 0.15:
             if(sentence_list[i] not in tmp_sentence_list and track_id_list[i] not in tmp_track_list):
                 tmp_sentence_list.append(sentence_list[i])
-                tmp_track_list.append(track_id_list[i])
-                jsonData["list"] .append([track_artist_info_dict[track_id_list[i]],
-                              track_song_info_dict[track_id_list[i]], three_gram_score_list[i], sentence_list[i]])
+                tmp_track_list.append(track_id_list[i])           
+                
+                jsonData["list"].append([track_artist_info_dict[track_id_list[i]],
+                track_song_info_dict[track_id_list[i]],
+                three_gram_score_list[i],
+                sentence_list[i]])
 
-    total.sort(key=lambda x: x[2], reverse=True)
-
+    #jsonData["list"].sort(key=lambda x: x[2], reverse=True)
+    print(json.dumps(jsonData))    
 
 except KeyError:
     sys.exit(1)

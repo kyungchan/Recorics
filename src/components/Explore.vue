@@ -42,12 +42,12 @@
         <v-flex xs12 sm12 md6 lg6 xl6 pa-2 d-flex>
           <v-card>
             <v-card-title>
-              <h2 style="margin-bottom:25px">다른 유사한 가사</h2>
-              <v-data-table hide-actions :headers="headers" :items="list" class="elevation-1">
+              <h2 style="margin-bottom:25px; width: 100%">다른 유사한 가사</h2>
+              <v-data-table style=" width: 100%" hide-actions :headers="headers" :items="resultList" class="elevation-1">
                 <template v-slot:items="props">
-                  <td>{{ props.item.artist }}</td>
-                  <td>{{ props.item.title }}</td>
-                  <td>{{ props.item.quote }}</td>
+                  <td>{{ props.item[0] }}</td>
+                  <td>{{ props.item[1] }}</td>
+                  <td>{{ props.item[3] }}</td>
                 </template>
               </v-data-table>
             </v-card-title>
@@ -102,31 +102,11 @@ export default {
         this.message = "";
         this.isShow = 1;
         this.result = res.data;
-        var resultSet = this.result.split("|");
-        this.resultLyrics = resultSet[0].replace(/\//gi, "<br />");
-        this.resultQuote = resultSet[1];
-        this.resultSong = resultSet[2];
-        this.resultArtist = resultSet[3];
-        this.resultList = resultSet[4]
-          .substring(2, resultSet[4].length - 2)
-          .replace(/\[/gi, "")
-          .replace(/'/gi, "")
-          .split("],");
-        this.list.c;
-        this.list = [];
-        for (var i in this.resultList) {
-          var item = this.resultList[i].split(",");
-          this.result = item;
-          if (i == this.resultList.length - 1) {
-            item[3] = item[3].substring(0, item[3].length - 1);
-          }
-          this.list.push({
-            artist: item[0].trimLeft(),
-            title: item[1].trimLeft(),
-            similarity: item[2].trimLeft() * 100.0,
-            quote: item[3]
-          });
-        }
+        this.resultLyrics = this.result["wholeLyrics"].replace(/\//ig, "<br />");
+        this.resultQuote = this.result["mostSimilar"];
+        this.resultSong = this.result["songTitle"];
+        this.resultArtist = this.result["artistName"];
+        this.resultList = this.result["list"];
       });
     }
   }
