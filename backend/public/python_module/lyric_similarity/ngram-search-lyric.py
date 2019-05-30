@@ -4,6 +4,7 @@ import argparse
 import sys
 import operator
 import os
+from collections import OrderedDict
 import json
 
 parser = argparse.ArgumentParser()
@@ -90,16 +91,20 @@ tmp_track_list = []
 max_song_line_number = track_num_line_info_dict[three_max_track_id]
 max_song_start_index = track_id_list.index(three_max_track_id)
 
-for i in range(0, max_song_line_number):
-    print(sentence_list[max_song_start_index + i] + '/')
 
-print('|%s|' % sentence_list[three_max_index])
-print('%s|%s|' % (
-    track_artist_info_dict[three_max_track_id], track_song_info_dict[three_max_track_id]))
+jsonData = OrderedDict()
+wholeLyrics = ''
+for i in range(0, max_song_line_number):
+    wholeLyrics += sentence_list[max_song_start_index + i] + '/'
+
+jsonData["wholeLyrics"] = wholeLyrics
+jsonData["mostSimilar"] = sentence_list[three_max_index]
+jsonData["songTitle"] = track_artist_info_dict[three_max_track_id]
+jsonData["artistName"] = track_song_info_dict[three_max_track_id]
+jsonData["list"] = []
 
 tmp_sentence_list.append(sentence_list[three_max_index])
 tmp_track_list.append(three_max_track_id)
-
 
 # total = 이중리스트
 # total = [[아티스트, 곡, 유사도, 문장]]
@@ -111,12 +116,11 @@ try:
             if(sentence_list[i] not in tmp_sentence_list and track_id_list[i] not in tmp_track_list):
                 tmp_sentence_list.append(sentence_list[i])
                 tmp_track_list.append(track_id_list[i])
-                total.append([track_artist_info_dict[track_id_list[i]],
+                jsonData["list"] .append([track_artist_info_dict[track_id_list[i]],
                               track_song_info_dict[track_id_list[i]], three_gram_score_list[i], sentence_list[i]])
 
     total.sort(key=lambda x: x[2], reverse=True)
 
-    if len(total) > 0:
-        print(total)
+
 except KeyError:
     sys.exit(1)

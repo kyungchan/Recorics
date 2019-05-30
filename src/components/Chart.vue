@@ -14,7 +14,7 @@
                   'background-image': 'url('+artistImages[position][index][1]+')'
                   } "
           >
-            <div style="position: absolute; padding: 5px; backgroundColor: #000000">
+            <div style="position: absolute; padding: 5px; backgroundColor: rgba( 0, 0, 0, 0.5 );">
               <h5>{{index + 1}}.{{artistImages[position][index][0]}}</h5>
             </div>
           </div>
