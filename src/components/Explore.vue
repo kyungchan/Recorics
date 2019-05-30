@@ -79,30 +79,26 @@ export default {
         {
           text: "가수",
           align: "left",
-          sortable: true,
           value: "artist"
         },
         {
           text: "제목",
           align: "left",
-          sortable: true,
           value: "title"
         },
         {
           text: "가사",
           align: "center",
-          sortable: true,
           value: "quote"
         }
       ],
-      list: [],
       result: "",
       resultLyrics: "",
       resultQuote: "",
       resultArtist: "",
       resultSong: "",
       query: "",
-      resultList: ""
+      resultList: []
     };
   },
   methods: {
