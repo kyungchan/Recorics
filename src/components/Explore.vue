@@ -9,15 +9,21 @@
     <v-container pa-3 justify-center>
       <v-layout id="search-form" pa-2 justify-center>
         <v-flex>
-          <v-text-field
-            v-model="query"
-            prepend-inner-icon="search"
-            single-line
-            solo
-            label="가사를 입력해보세요."
-            hint="예) 아마 너였을 거야."
-            clearable
-          ></v-text-field>
+          <form v-on:submit.prevent="similarSearch">
+            <v-text-field
+              v-model="query"
+              prepend-inner-icon="search"
+              single-line
+              solo
+              required
+              counter
+              :rules="textRules"
+              maxlength="50"
+              label="가사를 입력해보세요."
+              hint="아이유, 장기하, 홍진영, 볼빨간사춘기, dok2의 곡만 가능합니다. 예) 아마 너였을 거야."
+              clearable
+            ></v-text-field>
+          </form>
         </v-flex>
         <v-btn @click="similarSearch()" pa-0>검색</v-btn>
       </v-layout>
@@ -50,6 +56,9 @@
                   :items="resultList"
                   class="elevation-1"
                 >
+                  <template v-slot:no-data>
+                    <v-layout justify-center>유사한 가사를 가진 곡이 없습니다.</v-layout>
+                  </template>
                   <template v-slot:items="props">
                     <td>{{ props.item[0] }}</td>
                     <td>{{ props.item[1] }}</td>
@@ -72,6 +81,9 @@
 export default {
   data() {
     return {
+      textRules: [
+        v => v.length >= 4 || v.length == 0 || "4글자 이상 입력해주세요."
+      ],
       showProgress: false,
       banner: require("../assets/similar/similar_banner.jpg"),
       isShow: false,
@@ -103,21 +115,23 @@ export default {
   },
   methods: {
     similarSearch() {
-      this.showProgress = true;
-      this.isShow = false;
-      this.$http.post("/api/similar", { query: this.query }).then(res => {
-        this.showProgress = false;
-        this.isShow = true;
-        this.result = res.data;
-        this.resultLyrics = this.result["wholeLyrics"].replace(
-          /\//gi,
-          "<br />"
-        );
-        this.resultQuote = this.result["mostSimilar"];
-        this.resultSong = this.result["songTitle"];
-        this.resultArtist = this.result["artistName"];
-        this.resultList = this.result["list"];
-      });
+      if (this.query.length >= 4) {
+        this.showProgress = true;
+        this.isShow = false;
+        this.$http.post("/api/similar", { query: this.query }).then(res => {
+          this.showProgress = false;
+          this.isShow = true;
+          this.result = res.data;
+          this.resultLyrics = this.result["wholeLyrics"].replace(
+            /\//gi,
+            "<br />"
+          );
+          this.resultQuote = this.result["mostSimilar"];
+          this.resultSong = this.result["songTitle"];
+          this.resultArtist = this.result["artistName"];
+          this.resultList = this.result["list"];
+        });
+      }
     }
   }
 };

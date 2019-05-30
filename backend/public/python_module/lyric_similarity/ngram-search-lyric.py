@@ -16,7 +16,7 @@ args = parser.parse_args()
 data = args.data
 base = data
 
-#wb = load_workbook(os.path.abspath(
+# wb = load_workbook(os.path.abspath(
 #    './public/python_module/lyric_similarity') + '/lyric_data.xlsx')
 
 wb = load_workbook(os.path.abspath(
@@ -109,18 +109,18 @@ tmp_track_list.append(three_max_track_id)
 
 try:
     for i in range(0, len(three_gram_score_list)):
-        if three_gram_score_list[i] > 0.15:
+        if three_gram_score_list[i] > 0.25:
             if(sentence_list[i] not in tmp_sentence_list and track_id_list[i] not in tmp_track_list):
                 tmp_sentence_list.append(sentence_list[i])
-                tmp_track_list.append(track_id_list[i])           
-                
+                tmp_track_list.append(track_id_list[i])
+
                 jsonData["list"].append([track_artist_info_dict[track_id_list[i]],
-                track_song_info_dict[track_id_list[i]],
-                three_gram_score_list[i],
-                sentence_list[i]])
+                                         track_song_info_dict[track_id_list[i]],
+                                         three_gram_score_list[i],
+                                         sentence_list[i]])
 
     #jsonData["list"].sort(key=lambda x: x[2], reverse=True)
-    print(json.dumps(jsonData))    
+    print(json.dumps(jsonData))
 
 except KeyError:
     sys.exit(1)

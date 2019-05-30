@@ -41,6 +41,11 @@ const router = new Router({
             name: "pamphlet",
             component: Pamphlet,
             props: true
+        }, {
+            path: "*",
+            name: "404",
+            component: Home,
+            props: true
         }
     ]
 });
