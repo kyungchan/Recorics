@@ -21,38 +21,48 @@
         </v-flex>
         <v-btn @click="similarSearch()" pa-0>검색</v-btn>
       </v-layout>
-      {{message}}
-      <v-layout v-if="isShow != 0" id="result" row wrap>
-        <v-flex xs12 sm12 md6 lg6 xl6 pa-2 d-flex>
-          <v-card>
-            <v-card-title>
-              <v-layout column>
-                <h2>혹시 이 곡을 찾으셨나요?</h2>
-                <br>
-                <h3>가수: {{resultSong}}</h3>
-                <h3>제목: {{resultArtist}}</h3>
-                <h3>가장 유사한 문장: {{resultQuote}}</h3>
-                <h3>가사:</h3>
-                <p v-html="resultLyrics"></p>
-                <br>
-              </v-layout>
-            </v-card-title>
-          </v-card>
-        </v-flex>
-        <v-flex xs12 sm12 md6 lg6 xl6 pa-2 d-flex>
-          <v-card>
-            <v-card-title>
-              <h2 style="margin-bottom:25px; width: 100%">다른 유사한 가사</h2>
-              <v-data-table style=" width: 100%" hide-actions :headers="headers" :items="resultList" class="elevation-1">
-                <template v-slot:items="props">
-                  <td>{{ props.item[0] }}</td>
-                  <td>{{ props.item[1] }}</td>
-                  <td>{{ props.item[3] }}</td>
-                </template>
-              </v-data-table>
-            </v-card-title>
-          </v-card>
-        </v-flex>
+      <transition name="fadeHeight" mode="out-in">
+        <v-layout v-show="isShow" id="result" row wrap>
+          <v-flex xs12 sm12 md6 lg6 xl6 pa-2 d-flex>
+            <v-card>
+              <v-card-title>
+                <v-layout column>
+                  <h2>혹시 이 곡을 찾으셨나요?</h2>
+                  <br>
+                  <h3>가수: {{resultSong}}</h3>
+                  <h3>제목: {{resultArtist}}</h3>
+                  <h3>가장 유사한 문장: {{resultQuote}}</h3>
+                  <h3>가사:</h3>
+                  <p v-html="resultLyrics"></p>
+                  <br>
+                </v-layout>
+              </v-card-title>
+            </v-card>
+          </v-flex>
+          <v-flex xs12 sm12 md6 lg6 xl6 pa-2 d-flex>
+            <v-card>
+              <v-card-title>
+                <h2 style="margin-bottom:25px; width: 100%">다른 유사한 가사</h2>
+                <v-data-table
+                  style=" width: 100%"
+                  hide-actions
+                  :headers="headers"
+                  :items="resultList"
+                  class="elevation-1"
+                >
+                  <template v-slot:items="props">
+                    <td>{{ props.item[0] }}</td>
+                    <td>{{ props.item[1] }}</td>
+                    <td>{{ props.item[3] }}</td>
+                  </template>
+                </v-data-table>
+              </v-card-title>
+            </v-card>
+          </v-flex>
+        </v-layout>
+      </transition>
+      <v-layout v-if="showProgress" justify-center>
+        <v-progress-circular :size="70" :width="7" color="primary" indeterminate></v-progress-circular>
       </v-layout>
     </v-container>
   </v-layout>
@@ -62,8 +72,9 @@
 export default {
   data() {
     return {
+      showProgress: false,
       banner: require("../assets/similar/similar_banner.jpg"),
-      isShow: 0,
+      isShow: false,
       headers: [
         {
           text: "가수",
@@ -84,7 +95,6 @@ export default {
           value: "quote"
         }
       ],
-      message: "",
       list: [],
       result: "",
       resultLyrics: "",
@@ -97,12 +107,16 @@ export default {
   },
   methods: {
     similarSearch() {
-      this.message = "검색중입니다.";
+      this.showProgress = true;
+      this.isShow = false;
       this.$http.post("/api/similar", { query: this.query }).then(res => {
-        this.message = "";
-        this.isShow = 1;
+        this.showProgress = false;
+        this.isShow = true;
         this.result = res.data;
-        this.resultLyrics = this.result["wholeLyrics"].replace(/\//ig, "<br />");
+        this.resultLyrics = this.result["wholeLyrics"].replace(
+          /\//gi,
+          "<br />"
+        );
         this.resultQuote = this.result["mostSimilar"];
         this.resultSong = this.result["songTitle"];
         this.resultArtist = this.result["artistName"];
@@ -114,6 +128,18 @@ export default {
 </script>
 
 <style>
+.fadeHeight-enter-active,
+.fadeHeight-leave-active {
+  overflow: hidden;
+  transition: all 1s;
+  max-height: 2000px;
+}
+.fadeHeight-enter,
+.fadeHeight-leave-to {
+  overflow: hidden;
+  max-height: 0px;
+}
+
 #result {
   width: 100%;
 }

@@ -45,6 +45,10 @@
                 <h1>{{artists[seletedArtist].name}}</h1>
               </v-layout>
               <br>
+
+              <v-layout v-if="showProgress" justify-center>
+                <v-progress-circular :size="70" :width="7" color="primary" indeterminate></v-progress-circular>
+              </v-layout>
               <div v-html="lyrics"></div>
             </v-layout>
           </v-card-title>
@@ -70,6 +74,7 @@ export default {
   name: "app",
   data() {
     return {
+      showProgress: false,
       lyrics: "",
       hoverArtist: -1,
       seletedArtist: -1,
@@ -115,11 +120,13 @@ export default {
   watch: {},
   methods: {
     selectImg(seletedArtist) {
-      this.lyrics = "가사생성중입니다.";
+      this.showProgress = true;
+      this.lyrics = "";
       this.seletedArtist = seletedArtist;
       this.$http
         .get("/api/lyrics/" + this.artists[seletedArtist].script)
         .then(res => {
+          this.showProgress = false;
           this.lyrics = res.data.replace(/(?:\r\n|\r|\n)/g, "<br />");
         });
     },
@@ -143,17 +150,8 @@ export default {
   border-radius: 50%;
   margin-right: 10px;
 }
-#showLyrics {
-}
-
 #showLyrics img {
   object-fit: scale-down;
-}
-.lyrics-show {
-  background-color: white;
-  height: auto;
-  padding-top: 60px;
-  transition: height 2s;
 }
 
 .lyrics-title {
