@@ -58,10 +58,12 @@
       <v-flex row d-flex pa-3 xs12 sm12 md6 lg5 xl5>
         <v-card>
           <v-card-title primary-title>
-            <v-layout pa-3 column>
+            <v-layout column>
               <h1 style="margin-bottom: 10px;">가사 생성 근거</h1>
-              <img :src="artists[seletedArtist].chart">
-              <img :src="artists[seletedArtist].cloud">
+              <img class="groundsImg" :src="artists[seletedArtist].chart">
+              <v-layout justify-center class="groundsImg">단어 빈도 그래프</v-layout>
+              <img class="groundsImg" :src="artists[seletedArtist].cloud">
+              <v-layout justify-center class="groundsImg">단어 구름</v-layout>
             </v-layout>
           </v-card-title>
         </v-card>
@@ -106,7 +108,7 @@ export default {
           image: require("../assets/lyrics/dok2.jpg"),
           chart: require("../assets/lyrics/chart/dok2_chart.jpg"),
           cloud: require("../assets/lyrics/chart/dok2_cloud.jpg"),
-          script: "Dok2"
+          script: "dok2"
         },
         {
           name: "볼빨간사춘기",
@@ -145,6 +147,9 @@ export default {
 </script>
 
 <style>
+.groundsImg {
+  width: 100%;
+}
 .lyrics_img {
   width: 100px;
   height: 100px;
