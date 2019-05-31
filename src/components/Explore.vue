@@ -20,13 +20,14 @@
               :rules="textRules"
               maxlength="50"
               label="가사를 입력해보세요."
-              hint="아이유, 장기하, 홍진영, 볼빨간사춘기, dok2의 곡만 가능합니다. 예) 아마 너였을 거야."
+              hint="아이유, 장기하, 홍진영, 볼빨간사춘기, Dok2의 곡만 가능합니다. 예) 아마 너였을 거야."
               clearable
             ></v-text-field>
           </form>
         </v-flex>
         <v-btn @click="similarSearch()" pa-0>검색</v-btn>
       </v-layout>
+      <div id="resultScroll"></div>
       <transition name="fadeHeight" mode="out-in">
         <v-layout v-show="isShow" id="result" row wrap>
           <v-flex xs12 sm12 md6 lg6 xl6 pa-2 d-flex>
@@ -78,6 +79,8 @@
 </template>
 
 <script>
+var VueScrollTo = require("vue-scrollto");
+
 export default {
   data() {
     return {
@@ -91,17 +94,20 @@ export default {
         {
           text: "가수",
           align: "left",
-          value: "artist"
+          value: "artist",
+          sortable: false
         },
         {
           text: "제목",
           align: "left",
-          value: "title"
+          value: "title",
+          sortable: false
         },
         {
           text: "가사",
           align: "center",
-          value: "quote"
+          value: "quote",
+          sortable: false
         }
       ],
       result: "",
@@ -119,14 +125,23 @@ export default {
         this.showProgress = true;
         this.isShow = false;
         this.$http.post("/api/similar", { query: this.query }).then(res => {
+          VueScrollTo.scrollTo("#resultScroll", 1500, {
+            offset: -70,
+            easing: [0.77, 0, 0.175, 1]
+          });
           this.showProgress = false;
           this.isShow = true;
           this.result = res.data;
-          this.resultLyrics = this.result["wholeLyrics"].replace(
-            /\//gi,
-            "<br />"
-          );
+
           this.resultQuote = this.result["mostSimilar"];
+          this.resultLyrics = this.result["wholeLyrics"]
+            .replace(/\//gi, "<br />")
+            .replace(
+              new RegExp(this.resultQuote, "g"),
+              '<span style="background-color: rgba(255, 111, 97, 0.3">' +
+                this.resultQuote +
+                "</span>"
+            );
           this.resultSong = this.result["songTitle"];
           this.resultArtist = this.result["artistName"];
           this.resultList = this.result["list"];

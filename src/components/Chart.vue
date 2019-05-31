@@ -88,8 +88,9 @@ export default {
     return {
       mainSwiperOption: {
         slidesPerView: "3",
-        centeredSlides: true,
         spaceBetween: 30,
+        loop: true,
+        centeredSlides: true,
         autoplay: {
           delay: 3000,
           disableOnInteraction: false
@@ -133,7 +134,8 @@ export default {
         "2015",
         "2016",
         "2017",
-        "2018"
+        "2018",
+        "2019"
       ],
       artistImages: [
         [
@@ -655,6 +657,15 @@ export default {
           require("../assets/chart/10years/2018/2018_4.jpg"),
           require("../assets/chart/10years/2018/2018_5.jpg"),
           require("../assets/chart/10years/2018/2018_6.jpg")
+        ],
+        [
+          require("../assets/chart/10years/2019/2019_all.jpg"),
+          require("../assets/chart/10years/2019/2019_1.jpg"),
+          require("../assets/chart/10years/2019/2019_2.jpg"),
+          require("../assets/chart/10years/2019/2019_3.jpg"),
+          require("../assets/chart/10years/2019/2019_4.jpg"),
+          require("../assets/chart/10years/2019/2019_5.jpg"),
+          require("../assets/chart/10years/2019/2019_6.jpg")
         ]
       ]
     };

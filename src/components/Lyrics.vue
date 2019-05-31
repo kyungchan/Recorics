@@ -21,6 +21,7 @@
               style="position: relative;"
               v-scroll-to="{ 
                           el: '#scroll',
+                          offset: -40,
                           easing: [0.77, 0, 0.175, 1],
                           duration: 1500 
                       }"
@@ -101,11 +102,11 @@ export default {
           script: "janggiha"
         },
         {
-          name: "dok2",
+          name: "Dok2",
           image: require("../assets/lyrics/dok2.jpg"),
           chart: require("../assets/lyrics/chart/dok2_chart.jpg"),
           cloud: require("../assets/lyrics/chart/dok2_cloud.jpg"),
-          script: "dok2"
+          script: "Dok2"
         },
         {
           name: "볼빨간사춘기",
