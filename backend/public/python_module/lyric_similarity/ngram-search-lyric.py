@@ -16,11 +16,11 @@ args = parser.parse_args()
 data = args.data
 base = data
 
-# wb = load_workbook(os.path.abspath(
-#    './public/python_module/lyric_similarity') + '/lyric_data.xlsx')
-
 wb = load_workbook(os.path.abspath(
-    '.\public\python_module\lyric_similarity') + '\lyric_data.xlsx')
+   './public/python_module/lyric_similarity') + '/lyric_data.xlsx')
+
+#wb = load_workbook(os.path.abspath(
+#    '.\public\python_module\lyric_similarity') + '\lyric_data.xlsx')
 track_sheet = wb.worksheets[0]
 sentence_sheet = wb.worksheets[1]
 max_row = sentence_sheet.max_row

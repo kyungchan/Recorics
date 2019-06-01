@@ -35,7 +35,7 @@
         <v-flex xs12 sm12 md6 lg6 xl6 pa-1>
           <v-card>
             <v-card-title>
-              <h2>가수 영향력 버블 차트</h2>
+              <h2>가수 클러스터링 버블 차트</h2>
             </v-card-title>
             <v-container fluid class="pa-0">
               <swiper class="subSwiper" :options="swiperOption" ref="mySwiper">

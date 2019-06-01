@@ -124,7 +124,7 @@ export default {
     return {
       drawerItems: [
         { title: "홈", url: "/" },
-        { title: "차트", url: "/chart" },
+        { title: "차트분석", url: "/chart" },
         { title: "가사검색", url: "/explore" },
         { title: "가사생성", url: "/lyrics" }
       ],
