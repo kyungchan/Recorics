@@ -26,7 +26,7 @@
             <v-layout column>
               <div class="headline">가사검색</div>
               <br>
-              <div class="first">어렴풋이 기억나는 가사를 검색해보세요.</div>
+              <div class="first">어렴풋이 기억나는 가사를 검색해보세요.<br>Recorics가 가장 유사한 가사를 찾아줍니다.</div>
               <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn to="/explore" flat color="primary">더 알아보기</v-btn>
@@ -40,7 +40,7 @@
           <v-card-title primary-title>
             <v-layout column>
               <div class="headline">가사생성</div><br>
-              <div class="first">새로운 음악적 영감을 느껴보세요.</div>
+              <div class="first">새로운 음악적 영감을 느껴보세요.<br>Recorics가 원하는 가수의 스타일로 가사를 만들어줍니다.</div>
 
               <v-card-actions>
                 <v-spacer></v-spacer>
